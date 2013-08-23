@@ -1,0 +1,1 @@
+/* ekitjs static javascript file */
