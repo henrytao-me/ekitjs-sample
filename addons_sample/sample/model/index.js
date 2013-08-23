@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = function(instance) {
 	var types = instance.base.types;
-
+	
 	instance.sample.user = instance.base.model.extend({
 		_name: 'user',
 		_column: {
@@ -12,38 +12,31 @@ module.exports = function(instance) {
 				}),
 				last: types.auto(),
 				full: types.func({
-					get: function(ids, data, callback) {
+					get: function(ids, data, callback){
 						var res = {};
-						_.each(ids, function(id) {
-							res[id] = 'hello moto OK';
+						this.read({
+							_id: {
+								$in: ids
+							}
+						}, function(err, docs) {
+							_.each(docs, function(doc) {
+								res[doc._id] = [doc.name.first, doc.name.last].join(' ');
+							});
+							callback(res);
 						});
-						callback(res);
 					}
 				})
 			},
-			interest: [types.auto()],
-			username: types.auto({
-
-			}),
+			username: types.auto(),
 			password: types.auto({
 				validate: function(data) {
-					data = this._super(data);
-					if(data !== undefined) {
-						return data + ' OK DONE OK';
+					if(data !== undefined){
+						return 'md5_' + data;
 					};
 					return undefined;
-				}
-			}),
-			type: types.func({
-				get: function(ids, data, callback) {
-					var res = {};
-					_.each(ids, function(id) {
-						res[id] = 'hello moto OK';
-					});
-					callback(res);
 				}
 			})
 		},
 	});
-
+	
 };

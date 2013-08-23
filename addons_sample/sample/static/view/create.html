@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EkitJS Demo</title>
+		<base href="/" />
+		<%- css %>
+	</head>
+	<body>
+		
+		<div>
+			<h1>EkitJS Demo</h1>
+		</div>
+		
+		<div>
+			<button onclick="window.location.href='/'">List</button>
+			<button onclick="window.location.href='/create'">Create</button>
+		</div>
+		
+		<div>
+			<dl>
+				<dt>First name</dt>
+				<dd><input type="text" name="first" /></dd>
+				<dt>Last name</dt>
+				<dd><input type="text" name="last" /></dd>
+				<dt>Username</dt>
+				<dd><input type="text" name="username" /></dd>
+				<dt>Password</dt>
+				<dd><input type="text" name="password" /></dd>
+			</dl>
+			<button name="submit">Submit</button>
+		</div>
+
+		<%- js %>
+	</body>
+</html>

@@ -13,7 +13,8 @@ exports.config = {
 		'http://../static/css/css.css',
 	],
 	js: [
-		'http://../static/js/js.js',
+		'http://../static/lib/jquery-2.0.3.min.js',
+		'static/js/js.js',
 	],
 	
 	model: ['controller/index', 'model/index'],
