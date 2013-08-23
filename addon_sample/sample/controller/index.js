@@ -1,8 +1,8 @@
 var path = require('path');
 
-module.exports = function(instance, def) {
+module.exports = function(instance) {
 	
-	instance.doc.cIndex = instance.base.controller.extend({
+	instance.sample.cIndex = instance.base.controller.extend({
 		'*': function(req, res, next){
 			res.render(path.join(__dirname, '..', 'static', 'view', 'index'), {
 				css: def.asset.renderTags('css'),
